@@ -1,15 +1,15 @@
 package uk.co.mruoc.rest.polling
 
-import org.gradle.testkit.runner.GradleRunner
-import org.gradle.testkit.runner.UnexpectedBuildFailure
-import spock.lang.Specification
-
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse
 import static com.github.tomakehurst.wiremock.client.WireMock.get
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo
 import static org.assertj.core.api.Assertions.assertThat
 import static org.assertj.core.api.Assertions.catchThrowable
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+
+import org.gradle.testkit.runner.GradleRunner
+import org.gradle.testkit.runner.UnexpectedBuildFailure
+import spock.lang.Specification
 
 
 class PollRestGetEndpointTaskTest extends Specification {

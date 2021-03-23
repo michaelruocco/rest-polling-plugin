@@ -190,6 +190,9 @@ pluginBundle {
 }
 
 spotless {
+    groovy {
+        importOrder()
+    }
     java {
         removeUnusedImports()
         trimTrailingWhitespace()

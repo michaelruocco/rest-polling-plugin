@@ -1,13 +1,12 @@
 package uk.co.mruoc.rest.polling
 
+import static org.awaitility.Awaitility.await
+
 import groovy.util.logging.Slf4j
+import java.time.Duration
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-
-import java.time.Duration
-
-import static org.awaitility.Awaitility.await
 
 @Slf4j
 class PollRestGetEndpointTask extends DefaultTask {
