@@ -3,7 +3,7 @@ name: pipeline
 on:
   push:
     branches-ignore:
-      - 'library-template-*'
+      - 'rest-polling-plugin-*'
 
 jobs:
   build:
@@ -48,23 +48,6 @@ jobs:
       - name: Test
         run: ./gradlew test
 
-      - name: Sonar Analysis
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonarqube
-
-      - name: Codecov Coverage
-        uses: codecov/codecov-action@v1
-        with:
-          file: ./build/reports/jacoco/report.xml
-
-      - name: Codacy Coverage
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_TOKEN }}
-          coverage-reports: ./build/reports/jacoco/report.xml
-
       - name: Publish snapshot
         if: github.ref != 'refs/heads/master'
         env:
@@ -81,7 +64,10 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           OSSRH_PGP_SECRET_KEY: ${{ secrets.OSSRH_PGP_SECRET_KEY }}
           OSSRH_PGP_SECRET_KEY_PASSWORD: ${{ secrets.OSSRH_PGP_SECRET_KEY_PASSWORD }}
+          GRADLE_PUBLISH_KEY: ${{ secrets.GRADLE_PUBLISH_KEY }}
+          GRADLE_PUBLISH_SECRET: ${{ secrets.GRADLE_PUBLISH_SECRET }}
         run: |
           ./gradlew release -Prelease.customUsername=${{ github.actor }} -Prelease.customPassword=${{ github.token }}
           ./gradlew publish closeAndReleaseRepository
+          ./gradlew publishPlugins -Pgradle.publish.key=GRADLE_PUBLISH_KEY -Pgradle.publish.secret=GRADLE_PUBLISH_SECRET
           ./gradlew currentVersion
