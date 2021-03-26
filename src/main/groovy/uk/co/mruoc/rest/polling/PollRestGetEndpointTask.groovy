@@ -21,6 +21,9 @@ class PollRestGetEndpointTask extends DefaultTask {
     Map<String, String> expectedValues
 
     @Input
+    int minConsecutiveValidRequests = 1
+
+    @Input
     String delay = "PT0S"
 
     @Input
@@ -39,7 +42,7 @@ class PollRestGetEndpointTask extends DefaultTask {
         await().pollDelay(Duration.parse(delay))
                 .pollInterval(Duration.parse(interval))
                 .atMost(Duration.parse(atMost))
-                .until(new GetExpectedResponse(uri, buildExpectedResponse()))
+                .until(new GetExpectedResponse(uri, minConsecutiveValidRequests, buildExpectedResponse()))
     }
 
     private ExpectedResponse buildExpectedResponse() {
