@@ -19,7 +19,7 @@ public class ExpectedJsonValue implements ExpectedValue {
     public boolean isPresent(String json) {
         String value = jsonPath.read(json);
         boolean valid = expectedValue.equals(value);
-        log.info("valid {} expected {} actual {} at {}", valid, expectedValue, value, jsonPath.toString());
+        log.info("valid {} expected {} actual {} at {}", valid, expectedValue, value, jsonPath.getPath());
         return valid;
     }
 
