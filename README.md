@@ -1,7 +1,7 @@
 # Library Template
 
 [![Build](https://github.com/michaelruocco/rest-polling-plugin/workflows/pipeline/badge.svg)](https://github.com/michaelruocco/rest-polling-plugin/actions)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.michaelruocco/rest-polling-plugin.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.michaelruocco%22%20AND%20a:%22rest-polling-plugin%22)
+[![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/com/github/michaelruocco/rest-polling/com.github.michaelruocco.rest-polling.gradle.plugin/maven-metadata.xml.svg?colorB=007ec6&label=gradle%20plugin)](https://plugins.gradle.org/plugin/com.github.michaelruocco.rest-polling)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
