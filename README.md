@@ -19,6 +19,7 @@ Configuring a task to poll a rest endpoint:
 ```
 pollRestGetEndpoint {
     uri = "http//localhost:8080/actuator/health"
+    minConsecutiveValidRequests = 1 //optional defaults to 1
     expectedStatus = 200 //optional, defaults to 200
     expectedValues = [ "build.version": "0.1.0" ]
     delay = "PT0S" //optional, defaults to 0
